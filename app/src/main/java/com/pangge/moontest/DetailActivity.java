@@ -144,6 +144,7 @@ public class DetailActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         //inflater.inflate();
+        //hello git
 
         return super.onCreateOptionsMenu(menu);
     }
