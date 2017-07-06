@@ -67,8 +67,11 @@ SharedPreference
 
 * 定位当前城市，获取城市代码
 百度地图
+
 定位开发指南
+
 http://lbsyun.baidu.com/index.php?title=android-locsdk/guide/buildprojec
+
 相当好用，方便。。。。
 
 
