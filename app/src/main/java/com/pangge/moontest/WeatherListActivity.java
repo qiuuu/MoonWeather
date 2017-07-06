@@ -17,11 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.pangge.moontest.data.WeatherContract;
+import com.pangge.moontest.setting.LocationActivity;
 import com.pangge.moontest.sync.WeatherSyncUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by iuuu on 17/5/18.
@@ -35,6 +35,8 @@ public class WeatherListActivity extends AppCompatActivity implements
     private ForecastAdapter mForecastAdapter;
 
     private int mPosition = RecyclerView.NO_POSITION;
+
+    private int loadId;
 
     private static final int ID_FORECAST_LOADER = 22;
 
@@ -56,12 +58,15 @@ public class WeatherListActivity extends AppCompatActivity implements
         //compositeDisposable = new CompositeDisposable();
         Log.i("enter retrofit","---------!!!!!!!");
         // loadWeatherData();
+        loadId = getIntent().getIntExtra("LoaderId", 0);
 
-        getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
+       // getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
+        getSupportLoaderManager().initLoader(loadId, null, this);
 
-        WeatherSyncUtils.initialize(this);
-        WeatherSyncUtils.startImmediateSync(this);
-    }
+
+
+
+}
 
 
     private void openPreferredLocationInMap(){
@@ -69,16 +74,56 @@ public class WeatherListActivity extends AppCompatActivity implements
     }
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Uri forecastQueryUri;
         switch (id){
-            case ID_FORECAST_LOADER:
+            case MainActivity.ID_FORECAST_LOADER1:
                 /* URI for all rows of weather data in our weather table */
-                Uri forecastQueryUri = WeatherContentProvider.CONTENT_URI;
+                forecastQueryUri = Weather1ContentProvider.CONTENT_URI;
                 /* Sort order: Ascending by date */
 
                 // String sortOrder = WeatherContract.WeatherEntry.COLUMN_DATE + " ASC";
                 //date 格式 并不标准
 
                 //String selection = WeatherContract.WeatherEntry.getSqlSelectForTodayOnwards();
+                return new CursorLoader(this,
+                        forecastQueryUri,
+                        MainActivity.MAIN_FORECAST_PROJECTION,
+                        null,
+                        null,
+                        null);
+            case MainActivity.ID_FORECAST_LOADER2:
+                /* URI for all rows of weather data in our weather table */
+                forecastQueryUri = Weather2ContentProvider.CONTENT_URI;
+
+                return new CursorLoader(this,
+                        forecastQueryUri,
+                        MainActivity.MAIN_FORECAST_PROJECTION,
+                        null,
+                        null,
+                        null);
+            case MainActivity.ID_FORECAST_LOADER3:
+                /* URI for all rows of weather data in our weather table */
+                forecastQueryUri = Weather3ContentProvider.CONTENT_URI;
+                return new CursorLoader(this,
+                        forecastQueryUri,
+                        MainActivity.MAIN_FORECAST_PROJECTION,
+                        null,
+                        null,
+                        null);
+            case MainActivity.ID_FORECAST_LOADER4:
+                /* URI for all rows of weather data in our weather table */
+                forecastQueryUri = Weather4ContentProvider.CONTENT_URI;
+
+                return new CursorLoader(this,
+                        forecastQueryUri,
+                        MainActivity.MAIN_FORECAST_PROJECTION,
+                        null,
+                        null,
+                        null);
+            case MainActivity.ID_FORECAST_LOADER5:
+                /* URI for all rows of weather data in our weather table */
+                forecastQueryUri = Weather5ContentProvider.CONTENT_URI;
+
                 return new CursorLoader(this,
                         forecastQueryUri,
                         MainActivity.MAIN_FORECAST_PROJECTION,
@@ -112,12 +157,18 @@ public class WeatherListActivity extends AppCompatActivity implements
         mForecastAdapter.swapCursor(null);
     }
 
+    /**
+     * not useful
+     * @param date
+     */
     @Override
     public void onClick(long date) {
+
         Intent weatherDetailIntent = new Intent(WeatherListActivity.this,DetailActivity.class);
 
-        Uri uriForDateClicked = WeatherContract.WeatherEntry.buildWeatherUriWithData(date);
+        Uri uriForDateClicked = WeatherContract.WeatherEntry.buildWeatherUriWithData(date, loadId);
         weatherDetailIntent.setData(uriForDateClicked);
+
         Log.i("---to detail Act", date+"");
         startActivity(weatherDetailIntent);
     }
@@ -126,23 +177,5 @@ public class WeatherListActivity extends AppCompatActivity implements
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
 
-        inflater.inflate(R.menu.forecast, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        //if(id == R.id.a)
-        if(id == R.id.action_map){
-
-
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

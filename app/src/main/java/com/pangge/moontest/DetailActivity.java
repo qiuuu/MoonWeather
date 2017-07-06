@@ -1,12 +1,12 @@
 package com.pangge.moontest;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.pangge.moontest.data.WeatherContract;
 import com.pangge.moontest.databinding.ActivityDetailBinding;
 import com.pangge.moontest.utilities.MoonWeatherUtils;
 
@@ -41,11 +40,18 @@ public class DetailActivity extends AppCompatActivity implements
        // setContentView(R.layout.activity_detail);
         mDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
+       /* Intent intent = getIntent();
+        int loadId = intent.getIntExtra("LoaderId", 0);
+        Log.i("-detail---loadid",""+loadId);*/
+
+
+
 
         mUri = getIntent().getData();
         if(mUri == null) throw new NullPointerException("URI for DetailActivity cannot be null");
 
-        Log.i("detail --date-----","----onCreate");
+        Log.i("detail --date--uri---",mUri.toString());
+       // getSupportLoaderManager().initLoader(ID_DETAIL_LOADER,null,this);
         getSupportLoaderManager().initLoader(ID_DETAIL_LOADER,null,this);
 
     }
@@ -61,9 +67,11 @@ public class DetailActivity extends AppCompatActivity implements
                         null,
                         null,
                         null);
+
             default:
                 throw new RuntimeException("Loader not Implemented:" + id);
         }
+
     }
 
     @Override

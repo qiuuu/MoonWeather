@@ -21,7 +21,11 @@ public class WeatherSyncIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
 
-        WeatherSyncTask.syncWeather(this);
+        WeatherSyncTask task = new WeatherSyncTask();
+        task.syncWeather(getApplicationContext());
+
+
+       // WeatherSyncTask.syncWeather(this);
 
     }
 }

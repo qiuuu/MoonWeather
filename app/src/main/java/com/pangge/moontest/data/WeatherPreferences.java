@@ -20,6 +20,7 @@ public final class WeatherPreferences {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String keyForLocation = context.getString(R.string.pref_location_key);
         String defaultLocation = context.getString(R.string.pref_location_Id_default);
+        //String city1 = City.city1.toString();
         return sp.getString(keyForLocation,defaultLocation);
     }
 
@@ -33,5 +34,20 @@ public final class WeatherPreferences {
                 .longBitsToDouble(sp.getLong(PREF_COORD_LONG, Double.doubleToRawLongBits(0.0)));
 
         return preferredCoordinates;
+    }
+
+    public static boolean areNotificationsEnabled(Context context){
+        String displayNotificationsKey = context.getString(R.string.pref_enable_notifications_key);
+
+        boolean shouldDisplayNotificationsByDefault = context
+                .getResources()
+                .getBoolean(R.bool.show_notifications_by_default);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+
+        boolean shouldDisplayNotifications = sp
+                .getBoolean(displayNotificationsKey, shouldDisplayNotificationsByDefault);
+
+        return shouldDisplayNotifications;
     }
 }

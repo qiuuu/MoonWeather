@@ -2,6 +2,7 @@ package com.pangge.moontest.sync;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
@@ -20,7 +21,11 @@ public class WeatherFirebaseJobService extends JobService {
             @Override
             protected Void doInBackground(Void... voids) {
                 Context context = getApplicationContext();
-                WeatherSyncTask.syncWeather(context);
+               // WeatherSyncTask.syncWeather(context);
+                WeatherSyncTask task = new WeatherSyncTask();
+
+                task.syncWeather(context);
+                Log.i("after 3 hour","query syncWeather");
                 return null;
             }
 
@@ -32,7 +37,7 @@ public class WeatherFirebaseJobService extends JobService {
             }
         };
         mFetchWeatherTask.execute();
-        return false;
+        return true;
     }
 
     @Override

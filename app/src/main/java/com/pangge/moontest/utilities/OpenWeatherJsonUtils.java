@@ -10,8 +10,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.pangge.moontest.BaseApplication;
 import com.pangge.moontest.DaoSession;
-import com.pangge.moontest.MainActivity;
-import com.pangge.moontest.Weather;
+import com.pangge.moontest.Weather1;
 import com.pangge.moontest.data.WeatherContract;
 
 import org.greenrobot.greendao.rx.RxDao;
@@ -40,7 +39,7 @@ public class OpenWeatherJsonUtils {
      * @throws JSONException If JSON data cannot be properly parsed
      */
 
-    private static RxDao<Weather, Long> weatherDao;
+    private static RxDao<Weather1, Long> weatherDao;
     private static DaoSession daoSession;
 
 
@@ -49,22 +48,26 @@ public class OpenWeatherJsonUtils {
     {
 
         daoSession =BaseApplication.getDaoSession();
-        weatherDao = daoSession.getWeatherDao().rx();
-        Weather weather;
+        weatherDao = daoSession.getWeather1Dao().rx();
+        Weather1 weather;
         JsonObject data = forecastJson.get("data").getAsJsonObject();
         JsonElement wendu = data.get("wendu");
         JsonElement ganmao = data.get("ganmao");
         JsonElement city = data.get("city");
         JsonArray forecast = data.get("forecast").getAsJsonArray();
-        Log.i(wendu.toString(),"------温度---------------");
-        Gson gson = new Gson();
+       // Log.i(wendu.toString(),"------温度---------------");
+       /**
+        * need or not
+        * delete!!
+        * weather1 will miss city,wendu
+        * Gson gson = new Gson();
         weatherDao.getDao().deleteAll();
         for(JsonElement element:forecast){
             Log.i("---hello--",element.toString());
-            weather = gson.fromJson(element,Weather.class);
+            weather = gson.fromJson(element, Weather1.class);
             weatherDao.getDao().insert(weather);
            // weatherDao.getDao().q
-        }
+        }*/
 
 
         ContentValues[] weatherContentValues = new ContentValues[forecast.size()];
@@ -87,6 +90,7 @@ public class OpenWeatherJsonUtils {
 
 
             if(i == 0){
+
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_CITY, city.getAsString());
 
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_WENDU, wendu.getAsString());

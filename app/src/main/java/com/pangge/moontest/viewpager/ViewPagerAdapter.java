@@ -13,7 +13,7 @@ import java.util.List;
  * Created by iuuu on 17/6/7.
  */
 
-public class ViewPagerAdapter extends PagerAdapter{
+public class ViewPagerAdapter extends PagerAdapter {
     private List<View> viewList;
 
     public ViewPagerAdapter() {
@@ -65,4 +65,6 @@ public class ViewPagerAdapter extends PagerAdapter{
 
         return viewList;
     }
+
+
 }

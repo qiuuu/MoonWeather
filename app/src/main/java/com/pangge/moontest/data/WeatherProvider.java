@@ -11,22 +11,24 @@ import android.support.annotation.Nullable;
 
 import com.pangge.moontest.DaoMaster;
 import com.pangge.moontest.DaoSession;
-import com.pangge.moontest.Weather;
+import com.pangge.moontest.Weather1;
 
 import org.greenrobot.greendao.rx.RxDao;
 import org.greenrobot.greendao.rx.RxQuery;
 
 /**
+ * 并没有用到－－>Weather1ContentProvider
  * Created by iuuu on 17/5/16.
  */
 
-public class WeatherProvider extends ContentProvider {
+public class WeatherProvider {
+        //extends ContentProvider {
     public static final int WEATHER = 100;
     public static final int WEATHER_DATE= 101;
 
-    private DaoMaster daoMaster;
-    private RxDao<Weather, Long> weatherDao;
-    private RxQuery<Weather> weatherRxQuery;
+   /* private DaoMaster daoMaster;
+    private RxDao<Weather1, Long> weatherDao;
+    private RxQuery<Weather1> weatherRxQuery;
     private DaoSession daoSession;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
@@ -86,5 +88,5 @@ public class WeatherProvider extends ContentProvider {
     @Override
     public String getType(@NonNull Uri uri) {
         return null;
-    }
+    }*/
 }

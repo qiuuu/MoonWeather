@@ -8,46 +8,41 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.greenrobot.greendao.DaoLog;
-import org.greenrobot.greendao.database.StandardDatabase;
 import org.greenrobot.greendao.database.Database;
-
-import com.pangge.moontest.DaoSession;
-import com.pangge.moontest.WeatherDao;
+import org.greenrobot.greendao.database.StandardDatabase;
 
 /* Copy this code snippet into your AndroidManifest.xml inside the <application> element:
 
     <provider
-        android:name="com.pangge.moontest.WeatherContentProvider"
+        android:name="com.pangge.moontest.Weather3ContentProvider"
         android:authorities="com.pangge.moontest.provider" />
 */
 
-public class WeatherContentProvider extends ContentProvider {
+public class Weather3ContentProvider extends ContentProvider {
 
     public static final String AUTHORITY = "com.pangge.moontest.provider";
-    public static final String BASE_PATH = "weather";
+    public static final String BASE_PATH = "weather3";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
     public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
             + "/" + BASE_PATH;
     public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
             + "/" + BASE_PATH;
 
-    private static final String TABLENAME = WeatherDao.TABLENAME;
-    private static final String PK = WeatherDao.Properties.Id.columnName;
+    private static final String TABLENAME = Weather3Dao.TABLENAME;
+    private static final String PK = Weather3Dao.Properties.Id.columnName;
 
-    private static final int WEATHER_DIR = 0;
-    private static final int WEATHER_ID = 1;
+    private static final int WEATHER3_DIR = 0;
+    private static final int WEATHER3_ID = 1;
 
     private static final UriMatcher sURIMatcher;
 
     static {
         sURIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        sURIMatcher.addURI(AUTHORITY, BASE_PATH, WEATHER_DIR);
-        sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/#", WEATHER_ID);
+        sURIMatcher.addURI(AUTHORITY, BASE_PATH, WEATHER3_DIR);
+        sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/#", WEATHER3_ID);
     }
 
     /**
@@ -79,7 +74,7 @@ public class WeatherContentProvider extends ContentProvider {
         long id = 0;
         String path = "";
         switch (uriType) {
-        case WEATHER_DIR:
+        case WEATHER3_DIR:
             id = db.insert(TABLENAME, null, values);
             path = BASE_PATH + "/" + id;
             break;
@@ -92,48 +87,6 @@ public class WeatherContentProvider extends ContentProvider {
     }
 
     @Override
-    public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
-
-
-        SQLiteDatabase db = ((StandardDatabase)getDatabase()).getSQLiteDatabase();
-        int uriType = sURIMatcher.match(uri);
-        switch (uriType){
-            case WEATHER_DIR:
-                int rowsInserted = 0;
-                try{
-                    for (ContentValues value : values) {
-                        long _id = db.insert(TABLENAME, null, value);
-                        Log.i("heloo","----ninimi");
-                        System.out.print(_id);
-
-                        if(_id != -1){
-                            rowsInserted++;
-                        }
-
-                    }
-
-
-                }catch (Exception e){
-                    e.printStackTrace();
-
-                }
-                if(rowsInserted >0){
-                    getContext().getContentResolver().notifyChange(uri,null);
-                }
-                return rowsInserted;
-            default:
-                //  If the URI does match match WEATHER_DIR, return the super implementation of bulkInsert
-                return super.bulkInsert(uri, values);
-
-        }
-
-
-
-
-
-    }
-
-    @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         int uriType = sURIMatcher.match(uri);
         //Database db = getDatabase();
@@ -141,10 +94,10 @@ public class WeatherContentProvider extends ContentProvider {
         int rowsDeleted = 0;
         String id;
         switch (uriType) {
-        case WEATHER_DIR:
+        case WEATHER3_DIR:
                 rowsDeleted = db.delete(TABLENAME, selection, selectionArgs);
                 break;
-        case WEATHER_ID:
+        case WEATHER3_ID:
             id = uri.getLastPathSegment();
             if (TextUtils.isEmpty(selection)) {
                 rowsDeleted = db.delete(TABLENAME, PK + "=" + id, null);
@@ -162,17 +115,17 @@ public class WeatherContentProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection,
-            String[] selectionArgs) {
+                      String[] selectionArgs) {
         int uriType = sURIMatcher.match(uri);
         //Database db = getDatabase();
         SQLiteDatabase db = ((StandardDatabase)getDatabase()).getSQLiteDatabase();
         int rowsUpdated = 0;
         String id;
         switch (uriType) {
-        case WEATHER_DIR:
+        case WEATHER3_DIR:
             rowsUpdated = db.update(TABLENAME, values, selection, selectionArgs);
             break;
-        case WEATHER_ID:
+        case WEATHER3_ID:
             id = uri.getLastPathSegment();
             if (TextUtils.isEmpty(selection)) {
                     rowsUpdated = db.update(TABLENAME, values, PK + "=" + id, null);
@@ -190,15 +143,15 @@ public class WeatherContentProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
-            String[] selectionArgs, String sortOrder) {
+                        String[] selectionArgs, String sortOrder) {
 
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         int uriType = sURIMatcher.match(uri);
         switch (uriType) {
-        case WEATHER_DIR:
+        case WEATHER3_DIR:
             queryBuilder.setTables(TABLENAME);
             break;
-        case WEATHER_ID:
+        case WEATHER3_ID:
             queryBuilder.setTables(TABLENAME);
             queryBuilder.appendWhere(PK + "="
                     + uri.getLastPathSegment());
@@ -218,9 +171,9 @@ public class WeatherContentProvider extends ContentProvider {
     @Override
     public final String getType(Uri uri) {
         switch (sURIMatcher.match(uri)) {
-        case WEATHER_DIR:
+        case WEATHER3_DIR:
             return CONTENT_TYPE;
-        case WEATHER_ID:
+        case WEATHER3_ID:
             return CONTENT_ITEM_TYPE;
         default :
             throw new IllegalArgumentException("Unsupported URI: " + uri);
