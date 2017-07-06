@@ -74,4 +74,38 @@ http://lbsyun.baidu.com/index.php?title=android-locsdk/guide/buildprojec
 
 相当好用，方便。。。。
 
+#  解析XML
+
+https://futurestud.io/tutorials/retrofit-how-to-integrate-xml-converter
+
+没有用到网上介绍的Sax，Dom....
+
+解析城市列表
+
+http://mobile.weather.com.cn/js/citylist.xml
+
+```java
+@Root(name = "xml", strict = false)
+
+public class XMLCity {
+    @Attribute(name = "c1")
+    @Path("c")
+    public String id;
+
+
+    @ElementList(required = true, entry = "d", inline = true)
+    @Path("c")
+
+    public List<City> cities;
+    public List<City> getCityList(){
+        if(cities == null){
+            cities = new ArrayList<>();
+
+        }
+        return this.cities;
+    }
+
+}
+```
+
 
