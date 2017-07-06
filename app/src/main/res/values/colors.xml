@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorHot">#e44141</color>
     <color name="colorCold">#61a0e9</color>
+<<<<<<< HEAD
 
     <color name="white">#ffffff</color>
     <color name="gray">#686767</color>
@@ -16,4 +17,6 @@
     <color name="google_yellow">#edc855</color>
     <color name="google_green">#5cb171</color>
     <color name="google_purple">#aa6baf</color>
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 </resources>

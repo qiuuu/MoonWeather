@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -14,6 +15,8 @@
 
 
 
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -22,20 +25,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
+=======
+        <activity android:name=".MainActivity">
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".DetailActivity"
             android:screenOrientation="portrait">
+=======
+        <activity android:name=".DetailActivity">
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".WeatherListActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -53,6 +65,9 @@
         </activity>
         <activity android:name=".setting.SearchActivity"
             android:screenOrientation="portrait">
+=======
+        <activity android:name=".WeatherListActivity">
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -61,10 +76,15 @@
 
         <provider
             android:authorities="@string/content_authority"
+<<<<<<< HEAD
             android:name=".Weather1ContentProvider"
             android:exported="false" />
 
 
+=======
+            android:name=".WeatherContentProvider"
+            android:exported="false" />
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         <service android:name=".sync.WeatherSyncIntentService"
             android:exported="false" />
         <service android:name=".sync.WeatherFirebaseJobService"
@@ -74,6 +94,7 @@
             </intent-filter>
         </service>
 
+<<<<<<< HEAD
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="XM2CpCIdOGc66WHZIO4iNnunv9yQq7qu" />
@@ -82,6 +103,8 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     </application>
 
 </manifest>

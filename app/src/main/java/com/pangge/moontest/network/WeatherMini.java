@@ -18,6 +18,7 @@ public interface WeatherMini {
     Observable<Response<JsonObject>> query(
             @Query("city") String city
     );*/
+<<<<<<< HEAD
 
     /**
      * http://wthrcdn.etouch.cn/weather_mini?city=北京
@@ -29,11 +30,14 @@ public interface WeatherMini {
             @Query("city") String city
     );*/
 
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     @GET("weather_mini")
     Call<JsonObject> query(
             @Query("citykey") String citykey
     );
 
+<<<<<<< HEAD
     /*@GET("weather_mini")
     Response<JsonObject> query(
             @Query("citykey") String citykey
@@ -42,5 +46,7 @@ public interface WeatherMini {
     Observable<Response<JsonObject>> query(
             @Query("citykey") String citykey
     );*/
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 }

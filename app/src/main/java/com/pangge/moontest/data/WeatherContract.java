@@ -4,17 +4,24 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+<<<<<<< HEAD
 import com.pangge.moontest.Weather1ContentProvider;
 
 import com.pangge.moontest.Weather2ContentProvider;
 import com.pangge.moontest.Weather3ContentProvider;
 import com.pangge.moontest.Weather4ContentProvider;
 import com.pangge.moontest.Weather5ContentProvider;
+=======
+import com.pangge.moontest.WeatherContentProvider;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 /**
  * Created by iuuu on 17/5/15.
  * 可以删了
+<<<<<<< HEAD
  * bunengshan
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
  */
 
 public class WeatherContract {
@@ -39,6 +46,7 @@ public class WeatherContract {
         public static final String COLUMN_TIP = "ganmao";
         public static final String COLUMN_CITY = "city";
 
+<<<<<<< HEAD
         public static Uri buildWeatherUriWithData(long id, int loadId){
             //cursor position 0->
 
@@ -58,6 +66,13 @@ public class WeatherContract {
                     return ContentUris.withAppendedId(Weather1ContentProvider.CONTENT_URI, id+1);
 
             }
+=======
+        public static Uri buildWeatherUriWithData(long id){
+            //cursor position 0->
+
+
+            return ContentUris.withAppendedId(WeatherContentProvider.CONTENT_URI, id+1);
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             //return CONTENT_URI.buildUpon().appendPath(date).build();
         }
 

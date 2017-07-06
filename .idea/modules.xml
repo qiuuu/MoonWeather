@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/MoonWeather.iml" filepath="$PROJECT_DIR$/MoonWeather.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendaogenerate/greendaogenerate.iml" filepath="$PROJECT_DIR$/greendaogenerate/greendaogenerate.iml" />
     </modules>

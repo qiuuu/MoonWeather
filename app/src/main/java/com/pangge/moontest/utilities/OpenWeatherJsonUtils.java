@@ -10,7 +10,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.pangge.moontest.BaseApplication;
 import com.pangge.moontest.DaoSession;
+<<<<<<< HEAD
 import com.pangge.moontest.Weather1;
+=======
+import com.pangge.moontest.MainActivity;
+import com.pangge.moontest.Weather;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 import com.pangge.moontest.data.WeatherContract;
 
 import org.greenrobot.greendao.rx.RxDao;
@@ -39,7 +44,11 @@ public class OpenWeatherJsonUtils {
      * @throws JSONException If JSON data cannot be properly parsed
      */
 
+<<<<<<< HEAD
     private static RxDao<Weather1, Long> weatherDao;
+=======
+    private static RxDao<Weather, Long> weatherDao;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     private static DaoSession daoSession;
 
 
@@ -48,13 +57,19 @@ public class OpenWeatherJsonUtils {
     {
 
         daoSession =BaseApplication.getDaoSession();
+<<<<<<< HEAD
         weatherDao = daoSession.getWeather1Dao().rx();
         Weather1 weather;
+=======
+        weatherDao = daoSession.getWeatherDao().rx();
+        Weather weather;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         JsonObject data = forecastJson.get("data").getAsJsonObject();
         JsonElement wendu = data.get("wendu");
         JsonElement ganmao = data.get("ganmao");
         JsonElement city = data.get("city");
         JsonArray forecast = data.get("forecast").getAsJsonArray();
+<<<<<<< HEAD
        // Log.i(wendu.toString(),"------温度---------------");
        /**
         * need or not
@@ -68,6 +83,17 @@ public class OpenWeatherJsonUtils {
             weatherDao.getDao().insert(weather);
            // weatherDao.getDao().q
         }*/
+=======
+        Log.i(wendu.toString(),"------温度---------------");
+        Gson gson = new Gson();
+        weatherDao.getDao().deleteAll();
+        for(JsonElement element:forecast){
+            Log.i("---hello--",element.toString());
+            weather = gson.fromJson(element,Weather.class);
+            weatherDao.getDao().insert(weather);
+           // weatherDao.getDao().q
+        }
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 
         ContentValues[] weatherContentValues = new ContentValues[forecast.size()];
@@ -90,7 +116,10 @@ public class OpenWeatherJsonUtils {
 
 
             if(i == 0){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_CITY, city.getAsString());
 
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_WENDU, wendu.getAsString());

@@ -17,11 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.pangge.moontest.data.WeatherContract;
+<<<<<<< HEAD
 import com.pangge.moontest.setting.LocationActivity;
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 import com.pangge.moontest.sync.WeatherSyncUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+<<<<<<< HEAD
+=======
+import io.reactivex.disposables.CompositeDisposable;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 /**
  * Created by iuuu on 17/5/18.
@@ -36,8 +43,11 @@ public class WeatherListActivity extends AppCompatActivity implements
 
     private int mPosition = RecyclerView.NO_POSITION;
 
+<<<<<<< HEAD
     private int loadId;
 
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     private static final int ID_FORECAST_LOADER = 22;
 
 
@@ -58,6 +68,7 @@ public class WeatherListActivity extends AppCompatActivity implements
         //compositeDisposable = new CompositeDisposable();
         Log.i("enter retrofit","---------!!!!!!!");
         // loadWeatherData();
+<<<<<<< HEAD
         loadId = getIntent().getIntExtra("LoaderId", 0);
 
        // getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
@@ -67,6 +78,14 @@ public class WeatherListActivity extends AppCompatActivity implements
 
 
 }
+=======
+
+        getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
+
+        WeatherSyncUtils.initialize(this);
+        WeatherSyncUtils.startImmediateSync(this);
+    }
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 
     private void openPreferredLocationInMap(){
@@ -74,11 +93,18 @@ public class WeatherListActivity extends AppCompatActivity implements
     }
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+<<<<<<< HEAD
         Uri forecastQueryUri;
         switch (id){
             case MainActivity.ID_FORECAST_LOADER1:
                 /* URI for all rows of weather data in our weather table */
                 forecastQueryUri = Weather1ContentProvider.CONTENT_URI;
+=======
+        switch (id){
+            case ID_FORECAST_LOADER:
+                /* URI for all rows of weather data in our weather table */
+                Uri forecastQueryUri = WeatherContentProvider.CONTENT_URI;
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
                 /* Sort order: Ascending by date */
 
                 // String sortOrder = WeatherContract.WeatherEntry.COLUMN_DATE + " ASC";
@@ -91,6 +117,7 @@ public class WeatherListActivity extends AppCompatActivity implements
                         null,
                         null,
                         null);
+<<<<<<< HEAD
             case MainActivity.ID_FORECAST_LOADER2:
                 /* URI for all rows of weather data in our weather table */
                 forecastQueryUri = Weather2ContentProvider.CONTENT_URI;
@@ -130,6 +157,8 @@ public class WeatherListActivity extends AppCompatActivity implements
                         null,
                         null,
                         null);
+=======
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             default:
                 throw new RuntimeException("Loader Not Implemented: " + id);
 
@@ -157,6 +186,7 @@ public class WeatherListActivity extends AppCompatActivity implements
         mForecastAdapter.swapCursor(null);
     }
 
+<<<<<<< HEAD
     /**
      * not useful
      * @param date
@@ -169,6 +199,14 @@ public class WeatherListActivity extends AppCompatActivity implements
         Uri uriForDateClicked = WeatherContract.WeatherEntry.buildWeatherUriWithData(date, loadId);
         weatherDetailIntent.setData(uriForDateClicked);
 
+=======
+    @Override
+    public void onClick(long date) {
+        Intent weatherDetailIntent = new Intent(WeatherListActivity.this,DetailActivity.class);
+
+        Uri uriForDateClicked = WeatherContract.WeatherEntry.buildWeatherUriWithData(date);
+        weatherDetailIntent.setData(uriForDateClicked);
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         Log.i("---to detail Act", date+"");
         startActivity(weatherDetailIntent);
     }
@@ -177,5 +215,27 @@ public class WeatherListActivity extends AppCompatActivity implements
 
     }
 
+<<<<<<< HEAD
 
+=======
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.forecast, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //if(id == R.id.a)
+        if(id == R.id.action_map){
+
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+>>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 }
