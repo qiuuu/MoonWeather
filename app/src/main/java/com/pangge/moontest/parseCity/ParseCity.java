@@ -31,11 +31,9 @@ public class ParseCity {
 
     public CompositeDisposable mCompositeDisposable;
 
-    private List<Code> list;
     private List<City> cityList;
 
     private RxDao<City, Long> cityDao;
-    private RxQuery<City> cityRxQuery;
     private DaoSession daoSession;
 
     public ParseCity() {

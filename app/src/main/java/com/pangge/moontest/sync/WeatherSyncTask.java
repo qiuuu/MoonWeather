@@ -3,7 +3,6 @@ package com.pangge.moontest.sync;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
@@ -32,30 +31,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-=======
-import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.pangge.moontest.MainActivity;
-import com.pangge.moontest.Weather;
-import com.pangge.moontest.WeatherContentProvider;
-
-import com.pangge.moontest.data.WeatherPreferences;
-import com.pangge.moontest.network.WeatherMini;
-import com.pangge.moontest.utilities.OpenWeatherJsonUtils;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -79,7 +55,6 @@ public class WeatherSyncTask {
      +     */
     private static final String BASE_URL = "http://wthrcdn.etouch.cn/";
     //private static CompositeDisposable compositeDisposable;;
-<<<<<<< HEAD
     private static List<String> cityList;
     private static List<JsonObject> bodyList;
 
@@ -117,18 +92,11 @@ public class WeatherSyncTask {
         }
 
 
-=======
 
-
-    //synchronized
-    public static void syncWeather(Context context){
-        //compositeDisposable = new CompositeDisposable();;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         try {
             //default location 北京
             String location = WeatherPreferences.getPreferredWeatherLocation(context);
 
-<<<<<<< HEAD
 
             /*cityList.add("北京");
             cityList.add("武汉");
@@ -150,16 +118,13 @@ public class WeatherSyncTask {
 /**
  * NetworkSecurityConfig: No Network Security Config specified, using platform default
     */
-=======
-            Log.i(location,"---------------------");
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
             WeatherMini weatherMini = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                    // .addCallAdapterFactory()
                     .addConverterFactory(GsonConverterFactory.create())
                     .build().create(WeatherMini.class);
-<<<<<<< HEAD
             //JsonObject test1 = weatherMini.query(location).execute().body();
             //String test = test1.get("data").getAsString();
 
@@ -261,35 +226,7 @@ public class WeatherSyncTask {
 
 
 
-=======
-            /***
-             * activity && fragment
-             */
-            JsonObject body = weatherMini.query(location).execute().body();
-           // weatherMini.query(location).headers().
 
-           // Log.i("ddd---",body.get("data")).toString();
-            /* Parse the JSON into a list of weather values*/
-
-            ContentValues[] weatherValues = OpenWeatherJsonUtils.getWeatherContentValuesFromJson(context,body);
-            if(weatherValues != null && weatherValues.length != 0){
-                /* Get a handle on the ContentResolver to delete and insert data*/
-                ContentResolver moonContentResolver = context.getContentResolver();
-
-                /*If we have valid results, delete the old data and insert the new
-                 Delete old weather data because we don't need to keep multiple days' data*/
-                moonContentResolver.delete(
-                        WeatherContentProvider.CONTENT_URI,
-                        null,
-                        null);
-                /* Insert our new weather data into Sunshine's ContentProvider*/
-                moonContentResolver.bulkInsert(
-                        WeatherContentProvider.CONTENT_URI,
-                        weatherValues);
-            }
-
-
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             /***
              为什么不使用Rx响应式编程。只能在Acitvity中？？？忘了
             compositeDisposable.add(weatherMini.query(location)
@@ -326,13 +263,9 @@ public class WeatherSyncTask {
                             return Observable.just("sucess");
                         }
                     })*/
-<<<<<<< HEAD
             // .map(jsonObjectResponse -> jsonObjectResponse.body())
             /* .flatMap(new Function<JsonObject, ObservableSource<?>>() {
-=======
-                   // .map(jsonObjectResponse -> jsonObjectResponse.body())
-                   /* .flatMap(new Function<JsonObject, ObservableSource<?>>() {
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
                         @Override
                         public ObservableSource<?> apply(@NonNull JsonObject jsonObject) throws Exception {
                             Log.i("hello  everyone !!!!!","---------------------");
@@ -350,7 +283,6 @@ public class WeatherSyncTask {
                     .observeOn(Schedulers.newThread())
                     .subscribe());*/
 
-<<<<<<< HEAD
             Log.i("---begin notify---","--hello---");
 
             boolean notificationsEnabled = WeatherPreferences.areNotificationsEnabled(context);
@@ -365,10 +297,6 @@ public class WeatherSyncTask {
 
 
 
-
-
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         }catch (Exception e){
              /* Server probably invalid */
             e.printStackTrace();

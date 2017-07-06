@@ -37,7 +37,6 @@ public class MoonWeatherUtils {
                 return R.drawable.clear;
         }
     }
-<<<<<<< HEAD
     public static int getLargeArtDrawableForWeatherCondition(@NonNull String weatherName){
         switch (weatherName){
             case "晴":
@@ -66,6 +65,4 @@ public class MoonWeatherUtils {
                 return R.drawable.clear;
         }
     }
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 }

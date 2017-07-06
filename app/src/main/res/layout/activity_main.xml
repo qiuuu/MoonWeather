@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:orientation="vertical"
     tools:context="com.pangge.moontest.MainActivity">
 
@@ -18,12 +14,3 @@
 
 
 </LinearLayout>
-=======
-    tools:context="com.pangge.moontest.MainActivity">
-
-    <include layout="@layout/value_weather" />
-
-
-
-</FrameLayout>
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e

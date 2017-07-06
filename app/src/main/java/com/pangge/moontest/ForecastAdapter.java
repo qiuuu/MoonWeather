@@ -3,10 +3,7 @@ package com.pangge.moontest;
 
 import android.content.Context;
 import android.database.Cursor;
-<<<<<<< HEAD
-=======
-import android.provider.Settings;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,14 +25,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     private final Context mContext;
 
-<<<<<<< HEAD
+
     private static final int VIEW_TYPE_TODAY = 0;
     private static final int VIEW_TYPE_FUTURE_DAY = 1;
 
     private boolean mUseTodayLayout;
 
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
     private final ForecastAdapterOnClickHandler mClickHandler;
     public interface ForecastAdapterOnClickHandler{
         void onClick(long date);
@@ -47,18 +43,16 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
         mContext = context;
         mClickHandler = clickHandler;
-<<<<<<< HEAD
+
 
         mUseTodayLayout = mContext.getResources().getBoolean(R.bool.use_today_layout);
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     }
 
     @Override
     public void onBindViewHolder(ForecastAdapter.ForecastAdapterViewHolder holder, int position) {
 
         mCursor.moveToPosition(position);
-<<<<<<< HEAD
+
         int viewType = getItemViewType(position);
         int weatherImageId = 0;
         String weatherName = mCursor.getString(MainActivity.INDEX_WEATHER_TYPE);
@@ -82,14 +76,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
        /* String weatherName = mCursor.getString(MainActivity.INDEX_WEATHER_TYPE);
         int weatherImageId = MoonWeatherUtils
                 .getSmallArtDrawableForWeatherCondition(weatherName);*/
-=======
-        /****************
-                * Weather Icon *
-         ****************/
-        String weatherName = mCursor.getString(MainActivity.INDEX_WEATHER_TYPE);
-        int weatherImageId = MoonWeatherUtils
-                .getSmallArtDrawableForWeatherCondition(weatherName);
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         holder.iconView.setImageResource(weatherImageId);
 
         /****************
@@ -123,7 +109,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     @Override
     public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-<<<<<<< HEAD
+
         int layoutId;
 
         switch (viewType){
@@ -141,9 +127,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
         view.setFocusable(true);
 
-=======
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.forecast_list_item, parent, false);
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
         ForecastAdapterViewHolder forecastAdapterViewHolder = new ForecastAdapterViewHolder(view);
         return forecastAdapterViewHolder;
     }
@@ -154,7 +138,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
         return mCursor.getCount();
     }
-<<<<<<< HEAD
+
 
     @Override
     public int getItemViewType(int position) {
@@ -167,8 +151,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
        // return super.getItemViewType(position);
     }
 
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     /**
      -
      +     * Swaps the cursor used by the ForecastAdapter for its weather data. This method is called by
@@ -201,11 +183,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         }
 
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
         @Override
         public void onClick(View view) {
             int adapterPosition = getAdapterPosition();
@@ -213,17 +191,12 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             mCursor.moveToPosition(adapterPosition);
 
             int date = mCursor.getPosition();
-<<<<<<< HEAD
+
           //  mCursor.get---test get type
             String column3 = mCursor.getColumnName(3);
 
             Log.i("-date-adapter-Click-", column3);
-=======
-          //  mCursor.get
-            String column3 = mCursor.getColumnName(3);
 
-            Log.i("---date--onClick---", column3);
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
             Log.i("---date-Finished---", ""+date);
             mClickHandler.onClick(date);

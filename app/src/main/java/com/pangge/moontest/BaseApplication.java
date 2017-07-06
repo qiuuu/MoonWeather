@@ -1,7 +1,6 @@
 package com.pangge.moontest;
 
 import android.app.Application;
-<<<<<<< HEAD
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,16 +22,13 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-=======
-import android.database.sqlite.SQLiteOpenHelper;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 
 /**
  * Created by iuuu on 17/5/16.
  */
 
 public class BaseApplication extends Application {
-<<<<<<< HEAD
     private SQLiteDatabase db;
     private DaoMaster daoMaster;
     private static DaoSession daoSession;
@@ -48,24 +44,18 @@ public class BaseApplication extends Application {
 
     private static DaoMaster.DevOpenHelper mInstance = null;
 
-=======
-    private DaoMaster daoMaster;
-    private static DaoSession daoSession;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-<<<<<<< HEAD
         compositeDisposable = new CompositeDisposable();
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 
         //create database db file
         //SQLiteOpenHelper
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weathers-db", null);
         //get the created database db file
-<<<<<<< HEAD
         db = helper.getWritableDatabase();
         Log.i("hel-app","Main---workd");
 
@@ -79,20 +69,13 @@ public class BaseApplication extends Application {
               *
             daoMaster = new DaoMaster(getInstance(this).getWritableDatabase());
             */
-=======
-        //db = helper.getWritableDatabase();
 
-        if(null == daoMaster){
-            //create masterDao
-            daoMaster = new DaoMaster(helper.getWritableDatabase());
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             //create Session session
 
             daoSession = daoMaster.newSession();
         }
 
 
-<<<<<<< HEAD
         Weather1ContentProvider.daoSession = daoSession;
 
 
@@ -204,13 +187,5 @@ public class BaseApplication extends Application {
 
         }).subscribeOn(Schedulers.newThread());
     }
-=======
-        WeatherContentProvider.daoSession = daoSession;
 
-    }
-
-    public static DaoSession getDaoSession(){
-        return daoSession;
-    }
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 }

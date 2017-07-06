@@ -20,10 +20,7 @@ public final class WeatherPreferences {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String keyForLocation = context.getString(R.string.pref_location_key);
         String defaultLocation = context.getString(R.string.pref_location_Id_default);
-<<<<<<< HEAD
-        //String city1 = City.city1.toString();
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
         return sp.getString(keyForLocation,defaultLocation);
     }
 
@@ -38,7 +35,7 @@ public final class WeatherPreferences {
 
         return preferredCoordinates;
     }
-<<<<<<< HEAD
+
 
     public static boolean areNotificationsEnabled(Context context){
         String displayNotificationsKey = context.getString(R.string.pref_enable_notifications_key);
@@ -54,6 +51,5 @@ public final class WeatherPreferences {
 
         return shouldDisplayNotifications;
     }
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 }

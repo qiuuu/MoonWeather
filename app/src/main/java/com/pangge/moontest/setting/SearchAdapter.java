@@ -28,8 +28,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
-import io.reactivex.subjects.PublishSubject;
-import rx.functions.Action1;
+
 
 /**
  * Created by iuuu on 17/6/28.

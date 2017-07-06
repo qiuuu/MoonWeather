@@ -8,15 +8,12 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.location.Poi;
 import com.pangge.moontest.BaseApplication;
 import com.pangge.moontest.City;
 import com.pangge.moontest.CityDao;
 import com.pangge.moontest.DaoSession;
-import com.pangge.moontest.MainActivity;
 import com.pangge.moontest.component.AppModule;
 import com.pangge.moontest.component.DaggerAppComponent;
-import com.pangge.moontest.setting.SearchActivity;
 import com.pangge.moontest.sync.WeatherSyncUtils;
 
 import org.greenrobot.greendao.rx.RxQuery;
@@ -30,13 +27,10 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
-import io.reactivex.observers.DisposableObserver;
+
 import io.reactivex.schedulers.Schedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**

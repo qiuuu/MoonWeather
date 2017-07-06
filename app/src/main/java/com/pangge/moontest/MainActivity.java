@@ -1,17 +1,16 @@
 package com.pangge.moontest;
 
 import android.content.Intent;
-<<<<<<< HEAD
+
 import android.content.SharedPreferences;
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 import android.database.Cursor;
 
 import android.net.Uri;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-<<<<<<< HEAD
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,44 +51,21 @@ import java.util.Map;
 
 
 import javax.inject.Inject;
-=======
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.pangge.moontest.data.WeatherContract;
-import com.pangge.moontest.data.WeatherPreferences;
-import com.pangge.moontest.network.WeatherMini;
-import com.pangge.moontest.sync.WeatherSyncUtils;
-
-import org.greenrobot.greendao.rx.RxDao;
-
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
-<<<<<<< HEAD
+
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
-<<<<<<< HEAD
+
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -110,17 +86,7 @@ public class MainActivity extends AppCompatActivity implements
     private PageIndicatorView pageIndicatorView;
 
     private List<View> pageList;
-=======
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener{
-    @BindView(R.id.main_type) TextView typeText;
-    @BindView(R.id.temp) TextView tempText;
-    @BindView(R.id.city) TextView cityText;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     /**
     *   Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'void android.view.View.setOnClickListener(android.view.View$OnClickListener)' on a null object reference
     *  BindView 没有Bind成功！！为啥
@@ -129,16 +95,12 @@ public class MainActivity extends AppCompatActivity implements
 
     @BindView(R.id.weatherCard) CardView weatherCard;
 
-<<<<<<< HEAD
     public static final int ID_FORECAST_LOADER1 = 1;
     public static final int ID_FORECAST_LOADER2 = 2;
     public static final int ID_FORECAST_LOADER3 = 3;
     public static final int ID_FORECAST_LOADER4 = 4;
     public static final int ID_FORECAST_LOADER5 = 5;
 
-=======
-    private static final int ID_FORECAST_LOADER = 26;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     /*
      * The columns of data that we are interested in displaying within our MainActivity's list of
      * weather data.
@@ -173,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public static final String BASE_URL = "http://wthrcdn.etouch.cn/";
-<<<<<<< HEAD
+
    // private CompositeDisposable compositeDisposable;
     //private CardView card1;
 
@@ -184,11 +146,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Inject
     SharedPreferences sharedPreferences;
-=======
-    private CompositeDisposable compositeDisposable;
-    //private CardView card1;
 
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 
 
@@ -197,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
+
 
 
 
@@ -264,20 +222,11 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-=======
-        //card1 = (CardView)findViewById(R.id.weatherCard);
-        //card1.setOnClickListener(this);
-        ButterKnife.bind(this);
-        getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
-
-
-        weatherCard.setOnClickListener(this);
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
 
 
     }
 
-<<<<<<< HEAD
+
 
 
 
@@ -352,14 +301,13 @@ public class MainActivity extends AppCompatActivity implements
         return v;
     }
 
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
     @Override
     protected void onPause() {
         super.onPause();
       //  compositeDisposable.clear();
     }
-<<<<<<< HEAD
+
 
     @Override
     protected void onDestroy() {
@@ -378,14 +326,6 @@ public class MainActivity extends AppCompatActivity implements
                 /* URI for all rows of weather data in our weather table */
 
                 forecastQueryUri = Weather1ContentProvider.CONTENT_URI;
-=======
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        switch (id){
-            case ID_FORECAST_LOADER:
-                /* URI for all rows of weather data in our weather table */
-                Uri forecastQueryUri = WeatherContentProvider.CONTENT_URI;
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
                 /* Sort order: Ascending by date */
 
                // String sortOrder = WeatherContract.WeatherEntry.COLUMN_DATE + " ASC";
@@ -398,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements
                         null,
                         null,
                         null);
-<<<<<<< HEAD
+
             case ID_FORECAST_LOADER2:
                 /* URI for all rows of weather data in our weather table */
 
@@ -447,8 +387,7 @@ public class MainActivity extends AppCompatActivity implements
                         null,
                         null,
                         null);
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
             default:
                 throw new RuntimeException("Loader Not Implemented: " + id);
 
@@ -458,7 +397,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-<<<<<<< HEAD
+
         int id = loader.getId();
 
 
@@ -526,20 +465,13 @@ public class MainActivity extends AppCompatActivity implements
             String wendu = data.getString(INDEX_WEATHER_WENDU);
             String type = data.getString(INDEX_WEATHER_TYPE);
             // wendu = wendu.  "°c"
-=======
-        if(data.moveToFirst()){
 
-            String city = data.getString(INDEX_WEATHER_CITY);
-            String wendu = data.getString(INDEX_WEATHER_WENDU);
-            String type = data.getString(INDEX_WEATHER_TYPE);
-           // wendu = wendu.  "°c"
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
             String sTempFormat = getResources().getString(R.string.temp);
             String sFinalTemp = String.format(sTempFormat,wendu);
             cityText.setText(city);
             tempText.setText(sFinalTemp);
             typeText.setText(type);
-<<<<<<< HEAD
+
 
 
           //  Log.i("---load finish test---", city);
@@ -579,16 +511,7 @@ public class MainActivity extends AppCompatActivity implements
             initCustomViews();
         }
 
-=======
-        }
 
-        //If mPosition equals RecyclerView.NO_POSITION, set it to 0
-        //if(mPosition == RecyclerView.NO_POSITION) mPosition = 0;
-        // Smooth scroll the RecyclerView to mPosition
-        // mRecyclerView.smoothScrollToPosition(mPosition);
-        //If the Cursor's size is not equal to 0, call showWeatherDataView
-        // if(data.getCount() != 0) showWeatherDataView();
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
     }
 
     @Override
@@ -597,7 +520,7 @@ public class MainActivity extends AppCompatActivity implements
           * Since this Loader's data is now invalid, we need to clear the Adapter that is
           * displaying the data.
           */
-<<<<<<< HEAD
+
         /**
          * app destroy ---> 才调用此函数
          */
@@ -605,14 +528,12 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-=======
-       // mForecastAdapter.swapCursor(null);
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
     }
 
     @Override
     public void onClick(View view) {
-<<<<<<< HEAD
+
       //  Log.i("hello--","MainAcitivity----work");
         Intent weatherListIntent = new Intent(this,WeatherListActivity.class);
         weatherListIntent.putExtra("LoaderId", 3);
@@ -641,10 +562,5 @@ public class MainActivity extends AppCompatActivity implements
         }
         return super.onOptionsItemSelected(item);
     }
-=======
-        Log.i("hello--","MainAcitivity----workd");
-        Intent weatherListIntent = new Intent(this,WeatherListActivity.class);
-        startActivity(weatherListIntent);
-    }
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 }

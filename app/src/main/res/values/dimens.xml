@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_padding">16dp</dimen>
-<<<<<<< HEAD
+
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="editText_padding">8dp</dimen>
-=======
->>>>>>> 880b76cfb78fe7545fb118abe68f626a27df344e
+
 </resources>
